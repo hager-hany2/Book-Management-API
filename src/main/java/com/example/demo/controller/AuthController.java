@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.Author;
 import com.example.demo.service.AuthService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -24,11 +26,11 @@ public class AuthController {
 		return authservice.findAll();
 	}
 	@PostMapping
-	public Author insert(@RequestBody Author Auth) {
+	public Author insert(@RequestBody @Valid Author Auth) {
 		return authservice.insert(Auth);
 	}
 	@PutMapping
-	public Author update(@RequestBody Author Auth) {
+	public Author update(@RequestBody @Valid Author Auth) {
 		return authservice.update(Auth);
 	}
 	@DeleteMapping("/delete/{id}") 

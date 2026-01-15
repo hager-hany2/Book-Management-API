@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.entity.Book;
 import com.example.demo.service.BookService;
+
+import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/book")
 public class BookController {
@@ -24,7 +26,7 @@ public class BookController {
 		return bookService.findAll();
 	}
 	@PostMapping
-	public Book insert(@RequestBody Book book) {
+	public Book insert(@RequestBody @Valid Book book) {
 		return bookService.insert(book);
 	}
 	@GetMapping("/{Title}")
@@ -32,7 +34,7 @@ public class BookController {
 		return bookService.findByTitle(Title);
 	}
 	@PutMapping
-	public Book update(@RequestBody Book book) {
+	public Book update(@RequestBody @Valid Book book) {
 		return bookService.update(book);
 	}
 	@DeleteMapping("/delete/{id}") 

@@ -5,12 +5,17 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 @Table(name="Author")
 @Entity
 public class Author {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
     private Long author_id;
+//	@NotNull(message="should be enter name")
+	@NotBlank
     private String name;
     private String bio;
     private String nationality;
